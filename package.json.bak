@@ -1,5 +1,5 @@
 {
-  "name": "safecoin-token-registry-all",
+  "name": "solana-token-registry-all",
   "version": "1.0.0",
   "scripts": {
     "program:lint": "cd program && npm run lint",

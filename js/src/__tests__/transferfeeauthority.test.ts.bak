@@ -19,7 +19,7 @@ import {
 
 import {
   SendTransactionError
-} from '@safecoin/web3.js'
+} from '@solana/web3.js'
 
 describe('TransferFeeAuthority', () => {
   test.concurrent('Read-over-write for TransferFeeAuthority', async () => {

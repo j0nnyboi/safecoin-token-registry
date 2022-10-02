@@ -6,15 +6,15 @@ import {
   createInstructionCreateEntry,
   getAllTokens,
   PROGRAM_ID
-} from 'solana-token-registry';
+} from 'safecoin-token-registry';
 import {
   Connection,
   Keypair,
   PublicKey,
   Transaction
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
-const connection = new Connection('https://api.devnet.solana.com', 'confirmed')
+const connection = new Connection('https://api.devnet.safecoin.org', 'confirmed')
 
 const configFile = '/Users/chris/.config/solana/id.json'
 const userPrivateKeyString = readFileSync(configFile).toString()

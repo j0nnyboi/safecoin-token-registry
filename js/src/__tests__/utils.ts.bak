@@ -6,12 +6,12 @@ import {
   TransactionInstruction,
   SystemProgram,
   LAMPORTS_PER_SOL
-} from '@safecoin/web3.js'
+} from '@solana/web3.js'
 
 import {
   TOKEN_PROGRAM_ID,
   Token
-} from '@safecoin/safe-token'
+} from '@solana/safe-token'
 
 import { readFileSync } from 'fs'
 import { execSync } from 'child_process'

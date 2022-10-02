@@ -226,7 +226,7 @@ function CallToAction (props: {[key: string]: never}) {
       <CallToActionBox
         buttonWrapper={Link}
         buttonWrapperProps={{
-          href: 'https://github.com/ChrisBender/safecoin-token-registry/blob/master/js/src/index.ts#L279',
+          href: 'https://github.com/ChrisBender/solana-token-registry/blob/master/js/src/index.ts#L279',
           isExternal: true
         }}
         mainText="For Developers"

@@ -4,6 +4,6 @@
   "scripts": {
     "lint": "rustfmt src/*",
     "build": "rm -f build/* && cargo build-bpf --manifest-path=Cargo.toml --bpf-out-dir=build",
-    "deploy": "solana program deploy --final ./build/registry.so"
+    "deploy": "safecoin program deploy --final ./build/registry.so"
   }
 }

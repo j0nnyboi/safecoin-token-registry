@@ -52,7 +52,7 @@ export function Header (props: HeaderProps) {
         </RouterLink>
       </Flex>
       <ButtonGroup ml="auto" mr="50px" display={['none', 'block']}>
-        <Link href="https://github.com/ChrisBender/safecoin-token-registry" isExternal>
+        <Link href="https://github.com/ChrisBender/solana-token-registry" isExternal>
           <Button variant="github" display={props.suppressGitHub ? 'none' : 'inline'}>
             GitHub
           </Button>

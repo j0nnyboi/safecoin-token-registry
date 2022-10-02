@@ -11,7 +11,7 @@ import {
   getAllTokensGenerator,
   createInstructionCreateEntry,
   PROGRAM_ID
-} from 'safecoin-token-registry'
+} from 'solana-token-registry'
 
 import {
   Formik,
@@ -495,7 +495,7 @@ class Application extends React.Component<{}, ReadWriteBoxProps> {
   constructor (props: {[key: string]: never}) {
     super(props)
     this.state = {
-      conn: new Connection('https://api.devnet.safecoin.org', 'confirmed'),
+      conn: new Connection('https://api.devnet.solana.com', 'confirmed'),
       isConnectedToPhantom: false,
       userPublicKey: PublicKey.default
     }

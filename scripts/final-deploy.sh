@@ -20,7 +20,7 @@ npm run js:deploy
 # Upgrade the client version and deploy the client.
 sleep 2
 pushd client > /dev/null
-  npm install --upgrade solana-token-registry
+  npm install --upgrade safecoin-token-registry
 popd > /dev/null
 npm run client:deploy
 

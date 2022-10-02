@@ -1,5 +1,5 @@
 {
-  "name": "@j0nnyboi/safecoin-token-registry",
+  "name": "safecoin-token-registry",
   "version": "1.0.20",
   "main": "./lib/index.js",
   "scripts": {

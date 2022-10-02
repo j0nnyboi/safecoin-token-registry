@@ -5,7 +5,7 @@ use crate::{
 };
 use borsh::{BorshDeserialize, BorshSerialize};
 use byteorder::{BigEndian, ByteOrder};
-use safecoin_program::{
+use solana_program::{
     account_info::{next_account_info, AccountInfo},
     entrypoint::ProgramResult,
     msg,
@@ -147,7 +147,7 @@ impl<'a> Processor {
             account_registry_meta_space as u64,
             program_id,
         );
-        safecoin_program::program::invoke_signed(
+        solana_program::program::invoke_signed(
             &initialize_instruction_meta,
             &[account_user.clone(), account_registry_meta.clone()],
             &[&[b"meta", &[account_registry_meta_bump_seed]]],
@@ -299,7 +299,7 @@ impl<'a> Processor {
 
         // if account_user.key.to_bytes() != registry_meta.fee_update_authority {
         //     Self::assert_initialized_ata(&account_fee_source_ata)?;
-        //     let transfer_instruction = safe_token::instruction::transfer(
+        //     let transfer_instruction = spl_token::instruction::transfer(
         //         account_token_program.key,
         //         account_fee_source_ata.key,
         //         account_fee_destination_ata.key,
@@ -307,7 +307,7 @@ impl<'a> Processor {
         //         &[account_user.key],
         //         registry_meta.fee_amount,
         //     )?;
-        //     safecoin_program::program::invoke(
+        //     solana_program::program::invoke(
         //         &transfer_instruction,
         //         &[
         //             account_token_program.clone(),
@@ -522,7 +522,7 @@ impl<'a> Processor {
             account_registry_node_space as u64,
             program_id,
         );
-        safecoin_program::program::invoke_signed(
+        solana_program::program::invoke_signed(
             &initialize_instruction,
             &[account_user.clone(), account_registry_new.clone()],
             &[&[seed, &[bump_seed]]],
@@ -581,12 +581,12 @@ impl<'a> Processor {
     ) -> Result<(), ProgramError> {
         if account_fee_destination_ata.data_len() == 0 {
             let create_account_instr =
-                safe_associated_token_account::create_associated_token_account(
+                spl_associated_token_account::create_associated_token_account(
                     account_user.key,
                     account_fee_destination.key,
                     account_fee_mint.key,
                 );
-            safecoin_program::program::invoke(
+            solana_program::program::invoke(
                 &create_account_instr,
                 &[
                     account_ata_program.clone(),
@@ -633,7 +633,7 @@ impl<'a> Processor {
         account_ata: &AccountInfo,
     ) -> Result<(), RegistryError> {
         let derived_ata_pubkey =
-            safe_associated_token_account::get_associated_token_address(user_pubkey, mint_pubkey);
+            spl_associated_token_account::get_associated_token_address(user_pubkey, mint_pubkey);
         if derived_ata_pubkey != *account_ata.key {
             return Err(RegistryError::InvalidAssociatedTokenAccount);
         }
@@ -670,7 +670,7 @@ impl<'a> Processor {
     }
 
     fn assert_valid_account_mint(account_mint: &AccountInfo) -> Result<(), RegistryError> {
-        if *account_mint.owner != safe_token::ID {
+        if *account_mint.owner != spl_token::ID {
             return Err(RegistryError::InvalidMint);
         }
         Ok(())
@@ -706,21 +706,21 @@ impl<'a> Processor {
     }
 
     fn assert_valid_token_program(account: &AccountInfo) -> Result<(), RegistryError> {
-        if *account.key != safe_token::ID {
+        if *account.key != spl_token::ID {
             return Err(RegistryError::InvalidTokenProgram);
         }
         Ok(())
     }
 
     fn assert_valid_ata_program(account: &AccountInfo) -> Result<(), RegistryError> {
-        if *account.key != safe_associated_token_account::ID {
+        if *account.key != spl_associated_token_account::ID {
             return Err(RegistryError::InvalidATAProgram);
         }
         Ok(())
     }
 
     fn assert_valid_sysvar_rent(account: &AccountInfo) -> Result<(), RegistryError> {
-        if *account.key != safecoin_program::sysvar::rent::ID {
+        if *account.key != solana_program::sysvar::rent::ID {
             return Err(RegistryError::InvalidSysvarRentProgram);
         }
         Ok(())

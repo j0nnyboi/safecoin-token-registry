@@ -24,7 +24,7 @@ import {
 
 import {
   SendTransactionError
-} from '@safecoin/web3.js'
+} from '@solana/web3.js'
 
 describe('InitializeRegistry', () => {
   test.concurrent('Read-over-write for InitializeRegistry', async () => {

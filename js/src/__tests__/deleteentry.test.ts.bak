@@ -22,7 +22,7 @@ import {
 
 import {
   SendTransactionError
-} from '@safecoin/web3.js'
+} from '@solana/web3.js'
 
 describe('DeleteEntry', () => {
   test.concurrent('Read-over-write for DeleteEntry', async () => {
